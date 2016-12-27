@@ -61,8 +61,8 @@ var cities = [
     }).setView([37, 110], 3),
     southWest = L.latLng(-700, -200),
     northEast = L.latLng(700, 200);
-bounds = L.latLngBounds(southWest, northEast),
-mymap.setMaxBounds(bounds),
+bounds = L.latLngBounds(southWest, northEast);
+mymap.setMaxBounds(bounds);
 d3.json("./data/world_map.json", function (a, b)
     {
         function g()
