@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>demo</title>
+</head>
+<body>
+	<script src="/build/static/d3.min.js"></script>
+	<script>	
+		var nodeData = [
+			{name:"上海"},
+			{name:"广州"},
+			{name:"武汉"},
+			{name:"北京"},
+			{name:"南京"},
+			{name:"西安"},
+			{name:"香港"}
+		];
+		var lineData=[
+			{source:0,target:1},
+			{source:0,target:2},
+			{source:0,target:3},
+			{source:1,target:4},
+			{source:1,target:5},
+			{source:1,target:6}
+		];
+		var svgHeight=500,svgwidth=800; //度量定义
+		var color=d3.scale.category20();
+
+ 		var forceData=d3.layout.force()//生成力图数据相关 nodes lines  drag后会不断更新这个数据
+ 			.nodes(nodeData)
+ 			.links(lineData)
+ 			.size([svgwidth,svgHeight])
+ 			.linkDistance(100)
+ 			.charge(-400);
+ 			forceData.start();
+
+		console.log(nodeData,lineData);
+		//定义svg相关
+		var svg=d3.select('body')
+		    .append("div")
+		    .attr('id', 'flightMap')
+		    .append('svg')
+		    .attr('width', svgwidth)
+		    .attr('height', svgHeight)
+		    .attr("transform", "translate(0,0)");
+		 //线
+		 var forceLines=svg.selectAll("line")
+		 	.data(lineData)
+		 	.enter()
+		 	.append("line")
+		 	.attr("stroke","#ccc")
+		 	.attr('stroke-width', 1);
+		//圆圈
+		 var forceNodes=svg.selectAll("circle")
+		 	.data(nodeData)
+		 	.enter()
+		 	.append("circle")
+		 	.attr('r', 20)
+		 	.attr('fill', function(d,i){
+		 		return color(i);
+		 	})
+		 	.call(forceData.drag);// call drag
+		 //文字
+		 var forceTetx=svg.selectAll("text")
+		 	 .data(nodeData)
+		 	 .enter()
+		 	 .append("text")
+		 	 .attr("fill","#000")
+		 	 .attr("dx",20)
+		 	 .attr("dy",8)
+		 	 .text(function(d){
+		 	 	return d.name;
+		 	 });
+
+	forceData.on("tick", function(){ //对于每一个时间间隔
+	    //调用的是被布局过的lineData、nodeData里的数据 随着拖拽不断更新
+	    forceLines.attr("x1",function(d){ return d.source.x; })
+	        .attr("y1",function(d){ return d.source.y; })
+	        .attr("x2",function(d){ return d.target.x; })
+	        .attr("y2",function(d){ return d.target.y; });
+
+	    forceNodes.attr("cx",function(d){ return d.x; })
+	        .attr("cy",function(d){ return d.y; });
+
+	    forceTetx.attr("x", function(d){ return d.x; })
+	       .attr("y", function(d){ return d.y; });
+	 });
+
+	// tick事件监听更新
+	</script>
+</body>
+</html>
