@@ -54,13 +54,13 @@ var cities = [
     name: "changchun",
     color: "#DA9AEB"
 }],
-    mymap = L.map("flightMap", {
-        zoom: 3,
-        minZoom: 2,
-        maxZoom: 4
-    }).setView([37, 110], 3),
-    southWest = L.latLng(-700, -200),
-    northEast = L.latLng(700, 200);
+mymap = L.map("flightMap", {
+    zoom: 3,
+    minZoom: 2,
+    maxZoom: 4
+}).setView([37, 110], 3),
+southWest = L.latLng(-700, -200),
+northEast = L.latLng(700, 200);
 bounds = L.latLngBounds(southWest, northEast);
 mymap.setMaxBounds(bounds);
 d3.json("./data/world_map.json", function (a, b)
