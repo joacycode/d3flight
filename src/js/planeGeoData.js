@@ -2,53 +2,43 @@ var plane=function(){
 	var cities = [
 	    {
 	        pos: [116.3,39.9],//纬经度
-	        name: "Peking",
-	        color: "#FFCCCC"
+	        name: "北京",
 	    },
 	    {
 	        pos: [121.4,31.2],
-	        name: "Shanghai",
-	        color: "#F5CCFF"
+	        name: "上海",
 	    },
 	    {
 	        pos: [116.0046,28.6633],
-	        name: "nanchang",
-	        color: "#CCFFD1"
+	        name: "南昌",
 	    },
 	    {
 	        pos: [106.551556, 29.56301],
-	        name: "chongqing",
-	        color: "#42C7FF"
+	        name: "重庆",
 	    },
 	    {
 	        pos: [113.27,23.12911 ],
-	        name: "guangzhou",
-	        color: "#8591FF"
+	        name: "广州",
 	    },
 	    {
 	        pos: [108.366,22.817002 ],
-	        name: "nanning",
-	        color: "#E785FF"
+	        name: "南宁",
 	    },
 	    {
 	        pos: [ 91.17211,29.652491],
-	        name: "lasa",
-	        color: "#FF85CE"
+	        name: "拉萨",
 	    },
 	    {
 	        pos: [109.84034900000006,40.657378 ],
 	        name: "包头",
-	        color: "#DFD362"
 	    },
 	    {
 	        pos: [121.61468200000002,38.91400300000001 ],
-	        name: "dalian",
-	        color: "#7BDF62"
+	        name: "大连",
 	    },
 	    {
 	        pos: [125.32354399999997, 43.817072],
-	        name: "changchun",
-	        color: "#DA9AEB"
+	        name: "长春",
 	    }];
     return cities;
 }
